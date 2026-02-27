@@ -3,13 +3,14 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 // REGISTER
-exports.registerUser = async (req, res) => {
+exports.registerUser = async (req, res, next) => {
   try {
     const { name, email, password } = req.body;
 
     const userExists = await User.findOne({ email });
     if (userExists) {
-      return res.status(400).json({ message: "User already exists" });
+      res.status(409);
+      throw new Error("User already exists");
     }
 
     const salt = await bcrypt.genSalt(10);
@@ -22,27 +23,30 @@ exports.registerUser = async (req, res) => {
     });
 
     res.status(201).json({
-      message: "User registered successfully",
-      user,
-    });
+  message: "User registered successfully",
+  _id: user._id,
+  name: user.name,
+  email: user.email,
+});
   } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
+  next(error);
+}
 };
 
-// LOGIN
-exports.loginUser = async (req, res) => {
+// LOGIN =>
+  exports.loginUser = async (req, res, next) => {
   try {
     const { email, password } = req.body;
 
     const user = await User.findOne({ email });
     if (!user) {
-      return res.status(400).json({ message: "Invalid credentials" });
+      return res.status(401).json({ message: "Invalid credentials" });
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      return res.status(400).json({ message: "Invalid credentials" });
+      res.status(401);
+      throw new Error("Invalid credentials");
     }
 
     const token = jwt.sign(
@@ -55,7 +59,8 @@ exports.loginUser = async (req, res) => {
       message: "Login successful",
       token,
     });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
   }
+  catch (error) {
+  next(error);
+}
 };
