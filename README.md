@@ -92,14 +92,17 @@ JWT_SECRET=your_secret_key
 npm install
 npm run dev
 
-Server runs on:
+## Live Deployment
 
-http://localhost:5000
-📈 Project Status
+Backend API is live at:
 
-Phase 1 – Backend Setup ✔
-Phase 2 – Authentication ✔
-Phase 3 – CRUD Operations ✔
-Phase 4 – Authorization & Ownership Verification ✔
-Phase 5 – Stability Testing (Next)
-Phase 6 – Deployment (Upcoming)
+https://job-application-tracker-1b44.onrender.com
+
+### Available Endpoints
+
+- POST /api/auth/register
+- POST /api/auth/login
+- GET /api/jobs
+- POST /api/jobs
+- PUT /api/jobs/:id
+- DELETE /api/jobs/:id
