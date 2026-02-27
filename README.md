@@ -107,4 +107,5 @@ Phase 2 – Authentication ✔
 Phase 3 – CRUD Operations ✔
 Phase 4 – Authorization & Ownership Verification ✔
 Phase 5 – Stability Testing (Next)
-Phase 6 – Deployment (Upcomin
+<<<<<<< HEAD
+Phase 6 – Deployment (Upcoming)
