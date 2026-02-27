@@ -6,7 +6,7 @@ const {
   getJobs,
   updateJob,
   deleteJob,
-} = require("../controllers/jobcontroller");
+} = require("../controllers/temp");
 
 const protect = require("../middleware/authMiddleware");
 
