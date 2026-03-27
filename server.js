@@ -13,7 +13,12 @@ connectDB();
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://job-application-tracker-frontend.onrender.com",
+    credentials: true,
+  })
+);
 app.use(express.json());
 
 app.get("/test", (req, res) => {
