@@ -12,7 +12,6 @@ const { errorHandler } = require("./middleware/errorMiddleware");
 connectDB();
 
 const app = express();
-const cors = require("cors");
 app.use(express.json());
 
 app.use(cors({
@@ -21,8 +20,6 @@ app.use(cors({
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: false
 }));
-
-app.options("*", cors());
 
 
 app.get("/test", (req, res) => {
