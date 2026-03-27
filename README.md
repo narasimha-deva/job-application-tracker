@@ -1,9 +1,39 @@
-# Job Tracking Application
+Job Application Tracker API
 
-A job tracking application helps users manage their job search by organizing job postings and applications in one place. Users can save job listings, track the status of applications, set reminders for follow-ups, and gain insights into their job search process. This increases efficiency and ensures that no opportunities are missed.
+This is a backend project built using Node.js, Express, and MongoDB. It allows users to register, login, and manage job applications.
 
-## Benefits:
-- Keeps all job opportunities organized
-- Provides reminders for application follow-ups
-- Allows tracking of application status
-- Offers insights for improving job search strategies
+Live API:
+https://job-application-tracker-uh07.onrender.com
+
+Features:
+User registration and login using JWT authentication
+Create a job application
+View all job applications
+Update job status
+Protected routes for authorized users only
+
+Technologies used:
+Node.js
+Express.js
+MongoDB Atlas
+JWT authentication
+
+API endpoints:
+
+Authentication:
+POST /api/auth/register
+POST /api/auth/login
+
+Jobs:
+GET /api/jobs
+POST /api/jobs
+PUT /api/jobs/:id
+
+Authentication:
+Use Bearer token in request headers
+
+Example response:
+Check api-response.json file in this project
+
+Author:
+Narasimha
