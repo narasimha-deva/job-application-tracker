@@ -12,9 +12,18 @@ const { errorHandler } = require("./middleware/errorMiddleware");
 connectDB();
 
 const app = express();
-
-app.use(cors());
+const cors = require("cors");
 app.use(express.json());
+
+app.use(cors({
+  origin: "*",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: false
+}));
+
+app.options("*", cors());
+
 
 app.get("/test", (req, res) => {
   res.send("Test Working");
@@ -24,8 +33,8 @@ app.use("/api/auth", authRoutes);
 app.use("/api/jobs", jobRoutes);
 app.use(errorHandler);
 
-app.get('/', (req, res) => {
-  res.send('API is running...');
+app.get("/api/test", (req, res) => {
+  res.send("Test Working");
 });
 
 const PORT = process.env.PORT || 5000;
