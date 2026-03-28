@@ -14,7 +14,7 @@ const protect = require("../middleware/authMiddleware");
 router.post("/", protect, createJob);
 
 // Get all jobs (only logged-in user)
-router.get("/", getJobs);
+router.get("/", protect, getJobs);
 
 // Update job
 router.put("/:id", protect, updateJob);
