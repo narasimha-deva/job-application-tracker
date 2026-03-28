@@ -21,7 +21,7 @@ const createJob = async (req, res, next) => {
 // GET ALL JOBS
 const getJobs = async (req, res, next) => {
   try {
-    const jobs = await Job.find({ user: req.user.id });
+    const jobs = await Job.find();
     res.status(200).json(jobs);
   } catch (error) {
     next(error);
