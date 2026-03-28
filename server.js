@@ -30,8 +30,8 @@ app.use("/api/auth", authRoutes);
 app.use("/api/jobs", jobRoutes);
 app.use(errorHandler);
 
-app.get("/api/test", (req, res) => {
-  res.send("Test Working");
+app.get("/", (req, res) => {
+  res.send("Backend API is running successfully");
 });
 
 const PORT = process.env.PORT || 5000;
