@@ -1,5 +1,5 @@
 Job Application Tracker API
-users manages their job application status in one place 
+users manages their job applications status in one place 
 
 This is a backend project built using Node.js, Express, and MongoDB. It allows users to register, login, and manage job applications.
 
