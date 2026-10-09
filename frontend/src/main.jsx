@@ -125,6 +125,7 @@ function Dashboard({ logout }) {
   const [title, setTitle] = useState("");
   const [company, setCompany] = useState("");
   const [status, setStatus] = useState("Applied");
+  const [editingId, setEditingId] = useState(null);
   const [error, setError] = useState("");
 
   async function loadJobs() {
