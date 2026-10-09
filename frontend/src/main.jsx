@@ -139,7 +139,14 @@ function Dashboard({ logout }) {
   useEffect(() => {
     loadJobs();
   }, []);
-
+function startEdit(job) {
+setEditingId(job._id);
+setTitle(job.title);
+setCompany(job.company);
+setStatus(job.status || "Applied");
+setShowForm(true);
+setError("");
+}
   async function addJob(e) {
     e.preventDefault();
 
