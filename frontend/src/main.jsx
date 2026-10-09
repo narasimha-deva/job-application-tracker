@@ -159,6 +159,7 @@ function Dashboard({ logout }) {
       setTitle("");
       setCompany("");
       setStatus("Applied");
+      setEditingId(null);
       setShowForm(false);
       loadJobs();
     } catch (err) {
