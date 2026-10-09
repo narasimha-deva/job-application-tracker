@@ -120,6 +120,7 @@ function Dashboard({ logout }) {
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("All");
   const [showForm, setShowForm] = useState(false);
+  const [editingId, setEditingId] = useState(null);
 
   const [title, setTitle] = useState("");
   const [company, setCompany] = useState("");
