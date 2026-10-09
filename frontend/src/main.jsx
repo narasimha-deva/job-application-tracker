@@ -144,14 +144,17 @@ function Dashboard({ logout }) {
     e.preventDefault();
 
     try {
-      await request("/jobs", {
-        method: "POST",
-        body: JSON.stringify({
-          title,
-          company,
-          status
-        })
-      });
+      await request(
+  editingId ? `/jobs/${editingId}` : "/jobs",
+  {
+    method: editingId ? "PUT" : "POST",
+    body: JSON.stringify({
+      title,
+      company,
+      status
+    })
+  }
+);
 
       setTitle("");
       setCompany("");
