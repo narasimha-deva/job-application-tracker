@@ -4,7 +4,7 @@ A full-stack web application to manage job applications, track recruitment progr
 
 Live Demo
 
-- Frontend: https://job-application-tracker-4x4jaj5ye-jobba-application-tracker.vercel.app
+- Frontend: https://job-application-tracker-sigma-neon.vercel.app
 - Backend API: https://job-application-tracker-uh07.onrender.com
 
 Features
