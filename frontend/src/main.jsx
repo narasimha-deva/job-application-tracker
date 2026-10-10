@@ -338,12 +338,7 @@ setError("");
               >
                 Delete
               </button>
-              <button
-  className="edit"
-  onClick={() => startEdit(job)}
->
-  Edit
-</button>
+              
             </div>
           ))}
 
