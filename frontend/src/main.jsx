@@ -272,7 +272,7 @@ setError("");
 
         {showForm && (
           <form className="job-form" onSubmit={addJob}>
-            <h2>Add Application</h2>
+            <h2>{editingId ? "Edit Application" : "Add Application"}</h2>
 
             <input
               placeholder="Job title"
