@@ -120,6 +120,7 @@ function Dashboard({ logout }) {
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("All");
   const [showForm, setShowForm] = useState(false);
+  const [editingId, setEditingId] = useState(null);
 
   const [title, setTitle] = useState("");
   const [company, setCompany] = useState("");
@@ -138,23 +139,34 @@ function Dashboard({ logout }) {
   useEffect(() => {
     loadJobs();
   }, []);
-
+function startEdit(job) {
+setEditingId(job._id);
+setTitle(job.title);
+setCompany(job.company);
+setStatus(job.status || "Applied");
+setShowForm(true);
+setError("");
+}
   async function addJob(e) {
     e.preventDefault();
 
     try {
-      await request("/jobs", {
-        method: "POST",
-        body: JSON.stringify({
-          title,
-          company,
-          status
-        })
-      });
+      await request(
+  editingId ? `/jobs/${editingId}` : "/jobs",
+  {
+    method: editingId ? "PUT" : "POST",
+    body: JSON.stringify({
+      title,
+      company,
+      status
+    })
+  }
+);
 
       setTitle("");
       setCompany("");
       setStatus("Applied");
+      setEditingId(null);
       setShowForm(false);
       loadJobs();
     } catch (err) {
@@ -260,7 +272,7 @@ function Dashboard({ logout }) {
 
         {showForm && (
           <form className="job-form" onSubmit={addJob}>
-            <h2>Add Application</h2>
+            <h2>{editingId ? "Edit Application" : "Add Application"}</h2>
 
             <input
               placeholder="Job title"
@@ -286,7 +298,9 @@ function Dashboard({ logout }) {
             </select>
 
             <div>
-              <button type="submit">Add Application</button>
+              <button type="submit">
+  {editingId ? "Save Changes" : "Add Application"}
+</button>
               <button
                 type="button"
                 className="cancel"
@@ -311,13 +325,20 @@ function Dashboard({ logout }) {
               <strong>{job.title}</strong>
               <span>{job.company}</span>
               <span className="badge">{job.status}</span>
-
+              <button
+  type="button"
+  className="edit"
+  onClick={() => startEdit(job)}
+>
+  Edit
+</button>
               <button
                 className="delete"
                 onClick={() => deleteJob(job._id)}
               >
                 Delete
               </button>
+              
             </div>
           ))}
 
