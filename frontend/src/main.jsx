@@ -325,7 +325,13 @@ setError("");
               <strong>{job.title}</strong>
               <span>{job.company}</span>
               <span className="badge">{job.status}</span>
-
+              <button
+  type="button"
+  className="edit"
+  onClick={() => startEdit(job)}
+>
+  Edit
+</button>
               <button
                 className="delete"
                 onClick={() => deleteJob(job._id)}
