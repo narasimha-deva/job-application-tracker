@@ -298,7 +298,9 @@ setError("");
             </select>
 
             <div>
-              <button type="submit">Add Application</button>
+              <button type="submit">
+  {editingId ? "Save Changes" : "Add Application"}
+</button>
               <button
                 type="button"
                 className="cancel"
